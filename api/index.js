@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import statementRouter from './routes/statement.js';
 dotenv.config();
 
 mongoose
@@ -13,6 +14,7 @@ mongoose
   });
 
 const app = express();
+app.use(express.json());
 
 const PORT = process.env.PORT || 3005;
 
@@ -20,6 +22,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use('/api/statements', statementRouter);
