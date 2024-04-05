@@ -1,9 +1,9 @@
 import express from 'express';
-import { createStatement, statementTest } from '../controllers/statement.js';
+import { createStatement, getAllStatements } from '../controllers/statement.js';
 
 const router = express.Router();
 
-router.get('/', statementTest);
 router.post('/', createStatement);
+router.get('/', getAllStatements);
 
 export default router;
